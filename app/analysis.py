@@ -14,6 +14,24 @@ def show_analysis():
     differential_expression_analysis = st.checkbox("Differential Expression Analysis")
     pathway_analysis = st.checkbox("Pathway Analysis")
 
+    # Specific parameters for PCA
+    if pca_analysis:
+        num_components = st.slider("Number of PCA components", 1, 10, 2)
+
+    # Specific parameters for Clustering
+    if clustering_analysis:
+        num_clusters = st.slider("Number of clusters", 2, 10, 3)
+        distance_metric = st.selectbox("Distance metric", ["Euclidean", "Manhattan", "Cosine"])
+
+    # Specific parameters for Differential Expression Analysis
+    if differential_expression_analysis:
+        significance_level = st.slider("Significance level", 0.01, 0.1, 0.05)
+        fold_change = st.slider("Fold change", 1, 10, 2)
+
+    # Specific parameters for Pathway Analysis
+    if pathway_analysis:
+        pathway_database = st.selectbox("Pathway database", ["KEGG", "Reactome", "WikiPathways"])
+
     # Start analysis button
     start_analysis = st.button("Start Analysis")
 
