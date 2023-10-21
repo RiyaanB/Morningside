@@ -8,7 +8,7 @@ from app.data_processing import show_data_processing
 from app.analysis import show_analysis
 from app.machine_learning import show_machine_learning
 from app.results import show_results
-from app.cell_annotation import show_cell_annotation  # Import the new cell annotation page
+from app.data_integration import show_data_integration  # Import the new data integration page
 
 # Page configuration
 st.set_page_config(
@@ -20,7 +20,7 @@ st.set_page_config(
 # Sidebar navigation
 with st.sidebar:
     st.title("Navigation")
-    selected_page = st.radio("Select a page:", ["Homepage", "Data Upload", "Data Processing", "Analysis", "Machine Learning", "Results", "Cell Annotation"])  # Add the new page to the sidebar
+    selected_page = st.radio("Select a page:", ["Homepage", "Data Upload", "Data Processing", "Data Integration", "Analysis", "Machine Learning", "Results"])  # Add the new page to the sidebar
 
 # Display selected page
 if selected_page == "Homepage":
@@ -35,5 +35,5 @@ elif selected_page == "Machine Learning":
     show_machine_learning()
 elif selected_page == "Results":
     show_results()
-elif selected_page == "Cell Annotation":  # Display the new cell annotation page
-    show_cell_annotation()
+elif selected_page == "Data Integration":  # Display the new data integration page
+    show_data_integration()
