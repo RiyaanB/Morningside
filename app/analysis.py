@@ -91,17 +91,23 @@ def show_analysis():
         # Fake Cell Type Annotation results
         if cell_type_annotation:
             st.write("Cell Type Annotation Results:")
-            image = np.random.randn(100, 100)
+            x = np.random.randn(50)
+            y = np.random.randn(50)
+            cell_types = ["Heart Cell", "Lung Cell", "Liver Cell"]
+            colors = ["red", "green", "blue"]
+            labels = np.random.choice(cell_types, 50)
+            c = [colors[cell_types.index(label)] for label in labels]
             fig, ax = plt.subplots()
-            cax = ax.imshow(image, cmap='viridis')
-            fig.colorbar(cax)
+            scatter = ax.scatter(x, y, c=c, label=labels)
+            legend = ax.legend(*scatter.legend_elements(), title="Cell Types")
+            ax.add_artist(legend)
             st.pyplot(fig)
 
         # Fake RNA Velocity results
         if rna_velocity:
             st.write("RNA Velocity Results:")
             x = np.random.randn(50)
-            y = x + np.random.randn(50)
+            y = np.random.randn(50)
             velocity = np.random.randn(50)
             fig, ax = plt.subplots()
             quiver = ax.quiver(x, y, velocity, velocity)
