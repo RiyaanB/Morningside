@@ -1,4 +1,36 @@
+# Import libraries
 import streamlit as st
-x = st.slider("Select a value")
-st.write(x, "squared is", x * x)
 
+# Import pages
+from app.homepage import show_homepage
+from app.data_upload import show_data_upload
+from app.data_processing import show_data_processing
+from app.analysis import show_analysis
+from app.machine_learning import show_machine_learning
+from app.results import show_results
+
+# Page configuration
+st.set_page_config(
+    page_title="Morningside Platform",
+    page_icon="🧬",
+    layout="wide",
+)
+
+# Sidebar navigation
+with st.sidebar:
+    st.title("Navigation")
+    selected_page = st.radio("Select a page:", ["Homepage", "Data Upload", "Data Processing", "Analysis", "Machine Learning", "Results"])
+
+# Display selected page
+if selected_page == "Homepage":
+    show_homepage()
+elif selected_page == "Data Upload":
+    show_data_upload()
+elif selected_page == "Data Processing":
+    show_data_processing()
+elif selected_page == "Analysis":
+    show_analysis()
+elif selected_page == "Machine Learning":
+    show_machine_learning()
+elif selected_page == "Results":
+    show_results()
