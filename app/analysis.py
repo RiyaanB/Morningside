@@ -13,6 +13,8 @@ def show_analysis():
     clustering_analysis = st.checkbox("Clustering")
     differential_expression_analysis = st.checkbox("Differential Expression Analysis")
     pathway_analysis = st.checkbox("Pathway Analysis")
+    cell_type_annotation = st.checkbox("Cell Type Annotation")
+    rna_velocity = st.checkbox("RNA Velocity")
 
     # Specific parameters for PCA
     if pca_analysis:
@@ -31,6 +33,14 @@ def show_analysis():
     # Specific parameters for Pathway Analysis
     if pathway_analysis:
         pathway_database = st.selectbox("Pathway database", ["KEGG", "Reactome", "WikiPathways"])
+
+    # Specific parameters for Cell Type Annotation
+    if cell_type_annotation:
+        st.write("Cell Type Annotation Parameters...")
+
+    # Specific parameters for RNA Velocity
+    if rna_velocity:
+        st.write("RNA Velocity Parameters...")
 
     # Start analysis button
     start_analysis = st.button("Start Analysis")
@@ -76,4 +86,23 @@ def show_analysis():
             pathway_values = np.random.randn(3)
             fig, ax = plt.subplots()
             ax.bar(pathway_names, pathway_values)
+            st.pyplot(fig)
+
+        # Fake Cell Type Annotation results
+        if cell_type_annotation:
+            st.write("Cell Type Annotation Results:")
+            image = np.random.randn(100, 100)
+            fig, ax = plt.subplots()
+            cax = ax.imshow(image, cmap='viridis')
+            fig.colorbar(cax)
+            st.pyplot(fig)
+
+        # Fake RNA Velocity results
+        if rna_velocity:
+            st.write("RNA Velocity Results:")
+            x = np.random.randn(50)
+            y = x + np.random.randn(50)
+            velocity = np.random.randn(50)
+            fig, ax = plt.subplots()
+            quiver = ax.quiver(x, y, velocity, velocity)
             st.pyplot(fig)
